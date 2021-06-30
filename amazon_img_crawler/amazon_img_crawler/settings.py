@@ -14,7 +14,8 @@ NEWSPIDER_MODULE = 'amazon_img_crawler.spiders'
 
 
 # Crawl responsibly by identifying yourself (and your website) on the user-agent
-#USER_AGENT = 'amazon_img_crawler (+http://www.yourdomain.com)'
+
+USER_AGENT = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/79.0.3945.130 Safari/537.36'
 
 # Obey robots.txt rules
 ROBOTSTXT_OBEY = False
@@ -60,7 +61,7 @@ DOWNLOADER_MIDDLEWARES = {
     # 'amazon_img_crawler.middlewares.AmazonImgCrawlerDownloaderMiddleware': 543,
     'scrapy.downloadermiddlewares.cookies.CookiesMiddleware': 700,
     'scrapy.downloadermiddlewares.useragent.UserAgentMiddleware': None,
-    'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
+    # 'scrapy_user_agents.middlewares.RandomUserAgentMiddleware': 400,
 
 }
 
@@ -79,7 +80,7 @@ ITEM_PIPELINES = {
 
 
 # IMAGES_config
-IMAGES_STORE = '/path/to/valid/dir'
+IMAGES_STORE = 'img_dir'
 
 # 120 days of delay for files expiration
 FILES_EXPIRES = 120
