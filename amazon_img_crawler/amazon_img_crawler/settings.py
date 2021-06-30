@@ -72,9 +72,22 @@ DOWNLOADER_MIDDLEWARES = {
 
 # Configure item pipelines
 # See https://docs.scrapy.org/en/latest/topics/item-pipeline.html
-#ITEM_PIPELINES = {
-#    'amazon_img_crawler.pipelines.AmazonImgCrawlerPipeline': 300,
-#}
+ITEM_PIPELINES = {
+   # 'amazon_img_crawler.pipelines.AmazonImgCrawlerPipeline': 300,
+    'scrapy.pipelines.images.ImagesPipeline': 1,
+}
+
+
+# IMAGES_config
+IMAGES_STORE = '/path/to/valid/dir'
+
+# 120 days of delay for files expiration
+FILES_EXPIRES = 120
+
+# 30 days of delay for images expiration
+IMAGES_EXPIRES = 30
+
+# MEDIA_ALLOW_REDIRECTS = True
 
 # Enable and configure the AutoThrottle extension (disabled by default)
 # See https://docs.scrapy.org/en/latest/topics/autothrottle.html
