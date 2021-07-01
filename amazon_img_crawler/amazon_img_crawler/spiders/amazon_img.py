@@ -19,6 +19,14 @@ class AmazonImgSpider(scrapy.Spider):
             )
 
     def parse_img_url(self, response):
-        im_url= response.selector.xpath(
+        im_urls= response.selector.xpath(
             '//*[contains(@class, "a-image-container")]/img/@src').extract()
-        logging.info(f"{'*' * 10} im_url = {im_url}")
+        logging.info(f"{'*' * 15} im_url = {im_urls}{'*' * 15}")
+        clean_image_urls=[]
+        for img_url in im_urls:
+            clean_image_urls.append(response.urljoin(img_url))
+        logging.info(f"{'*' * 15} clean_image_urls = {clean_image_urls}{'*' * 15}")
+
+        yield {
+            'image_urls': clean_image_urls
+        }
