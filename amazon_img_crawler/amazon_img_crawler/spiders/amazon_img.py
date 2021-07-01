@@ -9,6 +9,9 @@ class AmazonImgSpider(scrapy.Spider):
     start_urls = ["https://www.amazon.com/"]
     handle_httpstatus_list = [503, 403]
 
+    # in url_of_products insert a link to the page with the goods you need
+    url_of_products = "https://www.amazon.com/international-shipping-arts-crafts/b?ie=UTF8&node=4954955011"
+
     def parse(self, response):
         """ a method that will be called to handle the response downloaded
         for each of the requests made.
@@ -19,7 +22,7 @@ class AmazonImgSpider(scrapy.Spider):
         """
         if response.status not in self.handle_httpstatus_list:
             yield Request(
-                f"https://www.amazon.com/s/ref=nb_sb_noss?url=search-alias%3Darts-crafts-intl-ship&field-keywords=",
+                f"{self.url_of_products}",
                 callback=self.parse_img_url,
                 dont_filter=False,
             )
