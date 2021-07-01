@@ -71,7 +71,7 @@ instance/
 .scrapy
 .jpg
 *.jpg
-img_dir
+img_dir/
 # Sphinx documentation
 docs/_build/
 
